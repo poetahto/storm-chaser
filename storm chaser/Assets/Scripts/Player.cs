@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     {
         GUILayout.Label($"Direction: { input.TargetDirection.ToString() }");
         GUILayout.Label($"Velocity: { movement.PlayerVelocity.ToString() }");
+        GUILayout.Label($"Airborne: { movement.Airborne }");
     }
 
     public void TogglePauseUI()

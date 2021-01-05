@@ -16,8 +16,10 @@ public class PlayerMovement : MonoBehaviour
     
     private Player _player;
     private PlayerInput _input;
+    private bool _grounded = false;
     
     public Vector2 PlayerVelocity => playerRigidbody.velocity;
+    public bool Airborne => !_grounded;
     
     private void Awake()
     {
@@ -28,13 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _grounded = Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8));
+        
         var targetVelocity = new Vector2(_input.TargetDirection.x, 0);
         
         targetVelocity.x *= acceleration;
         
         if (_input.WantsToJump)
         {
-            if (Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8)))
+            if (_grounded)
             {
                 targetVelocity.y = jumpStrength;
             }
