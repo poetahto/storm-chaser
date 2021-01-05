@@ -5,6 +5,7 @@
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Collider2D groundCheckCollider = null;
     [SerializeField] private Rigidbody2D playerRigidbody = null;
     [SerializeField] private float maxSpeed = 1;
     [SerializeField] private float acceleration = 0.5f;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 PlayerVelocity => playerRigidbody.velocity;
     public bool Airborne => !_grounded;
     public int RemainingJumps => _remainingJumps;
-    
+
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -35,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _grounded = Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8));
+        // _grounded = Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8));
+        _grounded = groundCheckCollider.IsTouchingLayers(~(1 << 8));
+        
         if (_grounded)
             _remainingJumps = maxJumps;
         

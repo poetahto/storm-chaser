@@ -6,36 +6,45 @@
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator playerAnimator = null;
+    [SerializeField] private float movementThreshold = 0.1f;
     
     private Player _player;
     private PlayerMovement _movement;
+    private PlayerGrappling _grappling;
     
     private void Awake()
     {
         _player = GetComponent<Player>();
         _movement = _player.movement;
+        _grappling = _player.grappling;
     }
 
     private void Update()
     {
-        if (_movement.Airborne)
+        if (_movement.PlayerVelocity.x > movementThreshold)
+        {
+            playerAnimator.transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
+        else if (_movement.PlayerVelocity.x < -movementThreshold)
+        {
+            playerAnimator.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if (_grappling.IsGrappling)
+        {
+            playerAnimator.Play("Grapple");
+        }
+        else if (_movement.Airborne)
         {
             // player is jumping
             playerAnimator.Play("Jump");
         }
-        else if (_movement.PlayerVelocity.x > 0)
+        else if (_movement.PlayerVelocity.x > movementThreshold || _movement.PlayerVelocity.x < -movementThreshold)
         {
-            // player is moving right
-            playerAnimator.transform.rotation = Quaternion.Euler(Vector3.zero);
+            // player is running
             playerAnimator.Play("Running");
         }
-        else if (_movement.PlayerVelocity.x < 0)
-        {
-            // player is moving left
-            playerAnimator.transform.rotation = Quaternion.Euler(0, 180, 0);
-            playerAnimator.Play("Running");
-        }
-        else if (_movement.PlayerVelocity == Vector2.zero)
+        else
         {
             // player is idle
             playerAnimator.Play("Idle");

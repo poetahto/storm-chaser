@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public PlayerInput input = null;
     public PlayerMovement movement = null;
     public PlayerAnimator animator = null;
+    public PlayerGrappling grappling = null;
 
     // Display debug information about player components
     private void OnGUI()
@@ -16,5 +17,6 @@ public class Player : MonoBehaviour
         GUILayout.Label($"Velocity: { movement.PlayerVelocity.ToString() }");
         GUILayout.Label($"Airborne: { movement.Airborne }");
         GUILayout.Label($"Air Jumps: { movement.RemainingJumps }");
+        GUILayout.Label($"Grapple Charged: { grappling.GrappleCharged }");
     }
 }

@@ -20,7 +20,6 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_controller.PercentComplete);
         _slider.value = _controller.PercentComplete;
     }
 }

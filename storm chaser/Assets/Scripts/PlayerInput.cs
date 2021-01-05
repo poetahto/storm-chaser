@@ -26,6 +26,7 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         CheckForPause();
+        CheckForFireGrapple();
         CheckForJump();
         UpdateTargetDirection();
     }
@@ -34,6 +35,12 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             UIElementController.Instance.TogglePauseMenu();
+    }
+
+    private void CheckForFireGrapple()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            _player.grappling.FireGrapple();
     }
 
     private void CheckForJump()
