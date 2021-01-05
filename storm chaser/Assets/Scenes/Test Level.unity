@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 1008239973}
   - component: {fileID: 1008239974}
   - component: {fileID: 1008239975}
+  - component: {fileID: 1008239976}
   m_Layer: 8
   m_Name: Scripts
   m_TagString: Untagged
@@ -610,10 +611,24 @@ MonoBehaviour:
   maxSpeed: 5
   acceleration: 1
   deacceleration: 0.5
+  maxJumps: 1
   jumpStrength: 5
   lowJumpMultiplier: 1.1
   fallMultiplier: 1.025
-  groundRaycastDistance: 0.25
+  groundRaycastDistance: 0.05
+--- !u!114 &1008239976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008239971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91cd4b56c464f24b0ae4b0c17e4b3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 692488135}
 --- !u!1 &1460232970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6396,6 +6411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782130038}
   - component: {fileID: 1782130037}
+  - component: {fileID: 1782130039}
   m_Layer: 0
   m_Name: Tracking Camera
   m_TagString: Untagged
@@ -6453,6 +6469,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782130039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782130036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990628748
 GameObject:
   m_ObjectHideFlags: 0

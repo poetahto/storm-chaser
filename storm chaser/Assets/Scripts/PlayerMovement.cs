@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// TODO: refactor
+
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed = 1;
     [SerializeField] private float acceleration = 0.5f;
     [SerializeField] private float deacceleration = 0.5f;
-    
-    [Header("Jump Settings")] 
+
+    [Header("Jump Settings")]
+    [SerializeField] private int maxJumps = 1;
     [SerializeField] private float jumpStrength = 1f;
     [SerializeField] private float lowJumpMultiplier = 1.5f;
     [SerializeField] private float fallMultiplier = 2f;
@@ -17,20 +20,24 @@ public class PlayerMovement : MonoBehaviour
     private Player _player;
     private PlayerInput _input;
     private bool _grounded = false;
+    private int _remainingJumps;
     
     public Vector2 PlayerVelocity => playerRigidbody.velocity;
     public bool Airborne => !_grounded;
+    public int RemainingJumps => _remainingJumps;
     
     private void Awake()
     {
-        
         _player = GetComponent<Player>();
         _input = _player.input;
+        _remainingJumps = maxJumps;
     }
 
     private void FixedUpdate()
     {
         _grounded = Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8));
+        if (_grounded)
+            _remainingJumps = maxJumps;
         
         var targetVelocity = new Vector2(_input.TargetDirection.x, 0);
         
@@ -38,9 +45,14 @@ public class PlayerMovement : MonoBehaviour
         
         if (_input.WantsToJump)
         {
-            if (_grounded)
+            if (_remainingJumps > 0)
             {
+                var temp1 = playerRigidbody.velocity;
+                temp1.y = 0;
+                playerRigidbody.velocity = temp1;
+                
                 targetVelocity.y = jumpStrength;
+                _remainingJumps--;
             }
             _input.ResetJump();
         }

@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
+// TODO: jump buffering (is that done in this or PlayerMovement.cs?)
+
 [RequireComponent(typeof(Player))]
 public class PlayerInput : MonoBehaviour
 {
-    public Vector2 TargetDirection => _targetDirection;
-    public bool WantsToJump => _wantsToJump; 
-    
     private Vector2 _targetDirection;
     private Player _player;
     private bool _wantsToJump;
+    
+    public Vector2 TargetDirection => _targetDirection;
+    public bool WantsToJump => _wantsToJump; 
 
     public void ResetJump()
     {
