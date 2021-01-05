@@ -65,8 +65,9 @@
      <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerCameraController.cs" />
-     <Compile Include="Assets\Scripts\UIElementEnabler.cs" />
+     <Compile Include="Assets\Scripts\UIElementController.cs" />
      <Compile Include="Assets\Scripts\LevelGameplayController.cs" />
+     <Compile Include="Assets\Scripts\ProgressBar.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

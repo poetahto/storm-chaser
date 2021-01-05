@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &194370011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 658838503}
-  progressBar: {fileID: 194370012}
+  progressBar: {fileID: 1853513228}
 --- !u!1 &770370415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,13 +1121,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1853513226}
   - component: {fileID: 1853513227}
+  - component: {fileID: 1853513228}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1853513226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1200,6 +1201,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1853513228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853513225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771f1bac30d342b0ad0fa3b3712963ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062056102
 GameObject:
   m_ObjectHideFlags: 0

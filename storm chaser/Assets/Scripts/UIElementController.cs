@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class UIElementEnabler : MonoBehaviour
+public class UIElementController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup pauseMenu = null;
-    [SerializeField] private CanvasGroup progressBar = null;
+    [SerializeField] private ProgressBar progressBar = null;
 
-    public static UIElementEnabler Instance;
+    public static UIElementController Instance;
 
     private void Awake()
     {
@@ -17,8 +17,8 @@ public class UIElementEnabler : MonoBehaviour
         pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
     }
 
-    public void SetProgressBar(bool active)
+    public void BindProgressBar(LevelGameplayController controller)
     {
-        progressBar.gameObject.SetActive(active);
+        progressBar.Bind(controller);
     }
 }
