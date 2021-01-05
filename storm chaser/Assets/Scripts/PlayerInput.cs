@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     private void CheckForPause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            _player.TogglePauseUI();
+            UIElementEnabler.Instance.TogglePauseMenu();
     }
 
     private void CheckForJump()

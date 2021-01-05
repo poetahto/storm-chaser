@@ -13,6 +13,7 @@ public class Level : ScriptableObject
     public bool Loaded => _scene.isLoaded;
 
     private Scene _scene;
+    private static Level _currentlyLoaded;
     
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Level : ScriptableObject
     public void Load()
     {
         SceneManager.LoadScene(levelBuildIndex, LoadSceneMode);
+        _currentlyLoaded = this;
     }
 
     public AsyncOperation LoadAsync()
