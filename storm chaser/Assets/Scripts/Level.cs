@@ -5,29 +5,37 @@ using UnityEngine.SceneManagement;
 public class Level : ScriptableObject
 {
     [Header("Level Settings")]
-    [SerializeField] private int LevelBuildIndex = 0;
-    [SerializeField] private string LevelName = "Default Level Name";
-    [SerializeField] private bool AdditiveLoad = false;
+    [SerializeField] private int levelBuildIndex = 0;
+    [SerializeField] private string levelName = "Default Level Name";
+    [SerializeField] private bool additiveLoad = false;
 
-    private LoadSceneMode LoadSceneMode => AdditiveLoad ? LoadSceneMode.Additive : LoadSceneMode.Single;
+    private LoadSceneMode LoadSceneMode => additiveLoad ? LoadSceneMode.Additive : LoadSceneMode.Single;
+    public bool Loaded => _scene.isLoaded;
+
+    private Scene _scene;
     
+    private void Awake()
+    {
+        _scene = SceneManager.GetSceneByBuildIndex(levelBuildIndex);
+    }
+
     public void Load()
     {
-        SceneManager.LoadScene(LevelBuildIndex, LoadSceneMode);
+        SceneManager.LoadScene(levelBuildIndex, LoadSceneMode);
     }
 
     public AsyncOperation LoadAsync()
     {
-        return SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode);
+        return SceneManager.LoadSceneAsync(levelBuildIndex, LoadSceneMode);
     }
 
-    public void UnloadAsync()
+    public AsyncOperation UnloadAsync()
     {
-        SceneManager.UnloadSceneAsync(LevelBuildIndex);
+        return SceneManager.UnloadSceneAsync(levelBuildIndex);
     }
 
     public override string ToString()
     {
-        return LevelName;
+        return levelName;
     }
 }
