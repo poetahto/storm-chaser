@@ -120,6 +120,12 @@
  <Reference Include="com.unity.cinemachine.editor">
  <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Tilemap.Editor">
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
