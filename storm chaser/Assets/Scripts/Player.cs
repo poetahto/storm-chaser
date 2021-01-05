@@ -3,14 +3,19 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] private Level debugEscapeLevel = default;
+
+    [Header("Player Components")]
+    public PlayerInput input = null;
+    public PlayerMovement movement = null;
     
-    private void Update()
+    // Display debug information about player components
+    private void OnGUI()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            TogglePauseUI();          
+        GUILayout.Label($"Direction: { input.TargetDirection.ToString() }");
+        GUILayout.Label($"Velocity: { movement.PlayerVelocity.ToString() }");
     }
 
-    private void TogglePauseUI()
+    public void TogglePauseUI()
     {
         if (debugEscapeLevel.Loaded)
         {

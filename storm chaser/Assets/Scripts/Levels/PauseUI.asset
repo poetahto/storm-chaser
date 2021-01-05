@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ed67791fea4f8fb740b5c5581bc0bf, type: 3}
   m_Name: PauseUI
   m_EditorClassIdentifier: 
-  LevelBuildIndex: 2
-  LevelName: Pause Menu
-  AdditiveLoad: 1
+  levelBuildIndex: 2
+  levelName: Pause Menu
+  additiveLoad: 1
