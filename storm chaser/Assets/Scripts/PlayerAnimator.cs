@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-// TODO: Grapple animation hookup
-
 [RequireComponent(typeof(Player))]
 public class PlayerAnimator : MonoBehaviour
 {
@@ -11,6 +9,11 @@ public class PlayerAnimator : MonoBehaviour
     private Player _player;
     private PlayerMovement _movement;
     private PlayerGrappling _grappling;
+
+    public void DisableAnimation()
+    {
+        playerAnimator.StopPlayback();
+    }
     
     private void Awake()
     {

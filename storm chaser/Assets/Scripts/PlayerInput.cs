@@ -1,20 +1,25 @@
 ﻿using UnityEngine;
 
-// TODO: jump buffering (is that done in this or PlayerMovement.cs?)
-
 [RequireComponent(typeof(Player))]
 public class PlayerInput : MonoBehaviour
 {
     private Vector2 _targetDirection;
     private Player _player;
     private bool _wantsToJump;
+    private bool _acceptingInput = true;
     
     public Vector2 TargetDirection => _targetDirection;
-    public bool WantsToJump => _wantsToJump; 
-
+    public bool WantsToJump => _wantsToJump;
+    public bool IsAcceptingInput => _acceptingInput;
+    
     public void ResetJump()
     {
         _wantsToJump = false;
+    }
+
+    public void SetAcceptingInput(bool acceptInput)
+    {
+        _acceptingInput = acceptInput;
     }
     
     private void Awake()
@@ -25,6 +30,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (!_acceptingInput)
+            return;
+        
         CheckForPause();
         CheckForFireGrapple();
         CheckForJump();

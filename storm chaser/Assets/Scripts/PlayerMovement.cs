@@ -34,9 +34,16 @@ public class PlayerMovement : MonoBehaviour
         _remainingJumps = maxJumps;
     }
 
+    public void AddForce(Vector2 force)
+    {
+        playerRigidbody.AddForce(force);
+    }
+
     private void FixedUpdate()
     {
-        // _grounded = Physics2D.Raycast(transform.position, Vector3.down, groundRaycastDistance, ~(1 << 8));
+        if (!_input.IsAcceptingInput)
+            return;
+        
         _grounded = groundCheckCollider.IsTouchingLayers(~(1 << 8));
         
         if (_grounded)

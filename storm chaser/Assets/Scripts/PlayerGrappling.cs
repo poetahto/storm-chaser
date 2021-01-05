@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
@@ -32,6 +31,7 @@ public class PlayerGrappling : MonoBehaviour
         _player = GetComponent<Player>();
         _camera = Camera.main;
         distanceJoint.enabled = false;
+        _timeSinceGrappled = grappleCooldown;
     }
 
     private void Start()
@@ -52,7 +52,7 @@ public class PlayerGrappling : MonoBehaviour
             return;
         }
         
-        var result = Physics2D.Raycast(_player.transform.position, AimDirection, grappleMaxDistance, 1 << 9);
+        var result = Physics2D.Raycast(_player.transform.position, AimDirection, grappleMaxDistance, ~(1 << 8));
 
         if (result.point == Vector2.zero)
         {
