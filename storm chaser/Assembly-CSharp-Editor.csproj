@@ -50,69 +50,75 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
  <Reference Include="UnityEditor.TestRunner">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Shaders">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.Runtime">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Runtime">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Universal.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Searcher.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -313,10 +319,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm chaser/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Users/Daniel/Documents/Programming/Projects/storm-chaser/storm chaser/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.13f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -665,9 +671,17 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{19874519-5b76-fe69-5e97-c12a79e2b48d}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{9265eee1-2f45-62e7-66e6-3f2edfd137e1}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{aaf73e02-76ee-68de-ca60-25cfe795f875}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
