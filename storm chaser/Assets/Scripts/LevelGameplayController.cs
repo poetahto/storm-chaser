@@ -6,6 +6,7 @@ public class LevelGameplayController : MonoBehaviour
     [SerializeField] private Level levelUI = null;
     [SerializeField] private Transform cameraTracker = null;
     [SerializeField] private Transform finishLine = null;
+    [SerializeField] private Texture2D mouseImage = default;
     
     private float CurrentDistance => finishLine.position.x - cameraTracker.position.x;
     private float _totalDistance;
@@ -20,6 +21,7 @@ public class LevelGameplayController : MonoBehaviour
     private void Awake()
     {
         levelUI.Load();
+        Cursor.SetCursor(mouseImage, new Vector2(4, -4), CursorMode.Auto);
     }
 
     private void Start()

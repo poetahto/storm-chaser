@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform target = null;
+    
     [SerializeField] private Collider2D spawningArea = null;
     [SerializeField] private Rigidbody2D[] obstacles = null;
     [SerializeField] private Vector2 spawnVelocity = Vector2.left;
     [SerializeField] private bool spawnWithCollision = false;
+    [SerializeField] private bool spawnWithSpin = false;
     
     [SerializeField] private LevelGameplayController controller = null;
     [SerializeField] private float initialSpawnRatePerMin = 10;
@@ -88,6 +90,20 @@ public class ObstacleSpawner : MonoBehaviour
         randomObstacle.transform.position = _spawnPosition;
         randomObstacle.gameObject.SetActive(true);
 
-        randomObstacle.velocity = spawnVelocity * 10;
+        var velocity = spawnVelocity * 10;
+
+        if (target != null)
+        {
+            
+            velocity = ((Vector2) target.position - _spawnPosition).normalized * Mathf.Lerp(5, 10, controller.PercentComplete);
+            velocity.y += 2;
+        }
+
+        randomObstacle.velocity = velocity;
+        
+        if (spawnWithSpin)
+        {
+            randomObstacle.AddTorque(50);
+        }
     }
 }
