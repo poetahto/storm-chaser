@@ -37,6 +37,11 @@ public class PlayerAnimator : MonoBehaviour
         {
             playerAnimator.Play("Grapple");
         }
+        else if (_movement.Sliding)
+        {
+            // player is sliding
+            playerAnimator.Play("Sliding");
+        }
         else if (_movement.Airborne)
         {
             playerAnimator.Play(_movement.PlayerVelocity.y > 0 ? "Jump Up" : "Jump Down");

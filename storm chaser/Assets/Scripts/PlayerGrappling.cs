@@ -10,11 +10,9 @@ public class PlayerGrappling : MonoBehaviour
     [SerializeField] private float pullAcceleration = 1;
     [SerializeField] private float grappleMinDistance = 1;
     [SerializeField] private float grappleMaxDistance = 10;
-    [SerializeField] private float grappleLaunchStrength = 1;
 
     [SerializeField] private DistanceJoint2D distanceJoint = null;
-    [SerializeField] private Collider2D playerCollider = null;
-    [SerializeField] private Rigidbody2D playerRigidbody = null;
+    [SerializeField] private LineRenderer grappleLine = null;
     
     private Player _player;
     private PlayerInput _input;
@@ -28,6 +26,7 @@ public class PlayerGrappling : MonoBehaviour
 
     private void Awake()
     {
+        grappleLine.enabled = false;
         _player = GetComponent<Player>();
         _camera = Camera.main;
         distanceJoint.enabled = false;
@@ -72,7 +71,7 @@ public class PlayerGrappling : MonoBehaviour
     {
         var pullAmount = maxPullStrength;
         _isGrappling = true;
-        
+
         distanceJoint.enabled = true;
         distanceJoint.connectedAnchor = point.position;
         distanceJoint.distance = Vector2.Distance(transform.position, point.position);
@@ -81,16 +80,22 @@ public class PlayerGrappling : MonoBehaviour
             ? new Vector2(-1.15f, 2.13f)
             : new Vector2(1.15f, 2.13f);
         
+        grappleLine.enabled = true;
+        grappleLine.SetPosition(0, (Vector2) _player.parentObject.transform.position + distanceJoint.anchor);
+        grappleLine.SetPosition(1, point.position);
+        
         while (Input.GetKey(KeyCode.Mouse0))
         {
             distanceJoint.connectedAnchor = point.position;
             distanceJoint.distance -= pullAmount;
             pullAmount = Mathf.Min(pullAmount + pullAcceleration, maxPullStrength);
             distanceJoint.distance = Mathf.Max(distanceJoint.distance, grappleMinDistance);
-            Debug.DrawLine((Vector2) _player.parentObject.transform.position + distanceJoint.anchor, point.position, Color.red);
+            grappleLine.SetPosition(0,(Vector2) _player.parentObject.transform.position + distanceJoint.anchor);
             yield return new WaitForFixedUpdate();
         }
 
+        grappleLine.enabled = false;
+        
         distanceJoint.enabled = false;
         _timeSinceGrappled = 0;
         _isGrappling = false;

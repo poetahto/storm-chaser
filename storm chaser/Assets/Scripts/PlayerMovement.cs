@@ -5,6 +5,9 @@
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Collider2D standingCollider = null;
+    [SerializeField] private Collider2D slidingCollider = null;
+    
     [SerializeField] private Collider2D groundCheckCollider = null;
     [SerializeField] private Rigidbody2D playerRigidbody = null;
     [SerializeField] private float maxSpeed = 1;
@@ -16,25 +19,43 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpStrength = 1f;
     [SerializeField] private float lowJumpMultiplier = 1.5f;
     [SerializeField] private float fallMultiplier = 2f;
+
+    [Header("Slide Settings")] 
+    [SerializeField] private float slideSpeed = 1;
+    [SerializeField] private float slideCooldown = 3;
     
     private Player _player;
     private PlayerInput _input;
     private bool _grounded = false;
     private int _remainingJumps;
+    private bool _sliding = false;
+    private float _timeSinceSlide;
     
     public Vector2 PlayerVelocity => playerRigidbody.velocity;
     public bool Airborne => !_grounded;
     public int RemainingJumps => _remainingJumps;
-
+    public bool Sliding => _sliding;
+    
     private void Awake()
     {
+        _timeSinceSlide = slideCooldown;
         _player = GetComponent<Player>();
         _input = _player.input;
         _remainingJumps = maxJumps;
+        SetStanding(true);
+    }
+
+    private void SetStanding(bool standing)
+    {
+        _sliding = !standing;
+        standingCollider.enabled = standing;
+        slidingCollider.enabled = !standing;
     }
 
     private void FixedUpdate()
     {
+        _timeSinceSlide += Time.fixedDeltaTime;
+        
         if (!_input.IsAcceptingInput)
             return;
         
@@ -42,6 +63,20 @@ public class PlayerMovement : MonoBehaviour
         
         if (_grounded)
             _remainingJumps = maxJumps;
+
+        if (_input.TargetDirection.y < 0 && _grounded && _timeSinceSlide > slideCooldown)
+        {
+            // slide
+            SetStanding(false);
+            playerRigidbody.velocity = new Vector2(slideSpeed * _input.TargetDirection.x, playerRigidbody.velocity.y);
+            return;
+        }
+
+        if (_sliding)
+        {
+            _timeSinceSlide = 0;
+            SetStanding(true);
+        }
         
         var targetVelocity = new Vector2(_input.TargetDirection.x, 0);
         
