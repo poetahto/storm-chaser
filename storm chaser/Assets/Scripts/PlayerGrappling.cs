@@ -54,32 +54,37 @@ public class PlayerGrappling : MonoBehaviour
         
         var result = Physics2D.Raycast(_player.transform.position, AimDirection, grappleMaxDistance, ~(1 << 8));
 
-        if (result.point == Vector2.zero)
+        if (result.collider == null)
         {
             // we missed
         }
         else
         {
-            StartCoroutine(Grapple(result.point));
+            GameObject hook = new GameObject("Grapple Hook");
+            hook.transform.position = result.point;
+            hook.transform.SetParent(result.transform);
+            
+            StartCoroutine(Grapple(hook.transform));
         }
     }
 
-    private IEnumerator Grapple(Vector2 point)
+    private IEnumerator Grapple(Transform point)
     {
         var pullAmount = maxPullStrength;
         _isGrappling = true;
         
         distanceJoint.enabled = true;
-        distanceJoint.connectedAnchor = point;
-        distanceJoint.distance = Vector2.Distance(transform.position, point);
+        distanceJoint.connectedAnchor = point.position;
+        distanceJoint.distance = Vector2.Distance(transform.position, point.position);
         distanceJoint.anchor = new Vector2(0, 1);
         
         while (Input.GetKey(KeyCode.Mouse0))
         {
+            distanceJoint.connectedAnchor = point.position;
             distanceJoint.distance -= pullAmount;
             pullAmount = Mathf.Min(pullAmount + pullAcceleration, maxPullStrength);
             distanceJoint.distance = Mathf.Max(distanceJoint.distance, grappleMinDistance);
-            Debug.DrawLine(transform.position, point, Color.red);
+            Debug.DrawLine(transform.position, point.position, Color.red);
             yield return new WaitForFixedUpdate();
         }
 
