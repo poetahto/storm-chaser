@@ -76,6 +76,10 @@ public class PlayerGrappling : MonoBehaviour
         distanceJoint.enabled = true;
         distanceJoint.connectedAnchor = point.position;
         distanceJoint.distance = Vector2.Distance(transform.position, point.position);
+
+        distanceJoint.anchor = _player.parentObject.rotation.eulerAngles.y != 0
+            ? new Vector2(-1.15f, 2.13f)
+            : new Vector2(1.15f, 2.13f);
         
         while (Input.GetKey(KeyCode.Mouse0))
         {
