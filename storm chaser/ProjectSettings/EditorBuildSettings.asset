@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: ccc30c65f7918444480e838c05f6f247
   - enabled: 1
-    path: Assets/Scenes/Test Level.unity
+    path: Assets/Scenes/Desert.unity
     guid: 29dd7da8be4a5c64e9056c9496e86841
   - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: e3fbea0a7cd09a141bbc8ff59c467a04
+  - enabled: 1
+    path: Assets/Scenes/Hell.unity
+    guid: e171d75b4ab4cb944aab07620183dcf1
   m_configObjects: {}

@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         GUILayout.Label($"Airborne: { movement.Airborne }");
         GUILayout.Label($"Air Jumps: { movement.RemainingJumps }");
         GUILayout.Label($"Grapple Charged: { grappling.GrappleCharged }");
+        GUILayout.Label($"Completion: { gameplayController.PercentComplete }");
     }
 
     public void DamagePlayer()

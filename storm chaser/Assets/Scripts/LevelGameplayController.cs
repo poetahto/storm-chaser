@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class LevelGameplayController : MonoBehaviour
 {
@@ -29,5 +30,10 @@ public class LevelGameplayController : MonoBehaviour
         UIElementController.Instance.BindProgressBar(this);
         
         _totalDistance = CurrentDistance;
+    }
+
+    private void Update()
+    {
+        Debug.Log($"finishline: {finishLine.position.x} trakcer: {cameraTracker.position.x} ");
     }
 }
