@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
 
     public void DamagePlayer()
     {
-        StartCoroutine(DeathEffect());
+        if (input.IsAcceptingInput)
+            StartCoroutine(DeathEffect());
     }
 
     private IEnumerator DeathEffect()
