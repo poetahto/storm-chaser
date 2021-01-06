@@ -6,8 +6,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private LevelGameplayController gameplayController;
-    
-    [Header("Player Components")]
+
+    [Header("Player Components")] 
+    public Transform parentObject = null;
     public PlayerInput input = null;
     public PlayerMovement movement = null;
     public PlayerAnimator animator = null;

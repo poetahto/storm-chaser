@@ -52,7 +52,7 @@ public class PlayerGrappling : MonoBehaviour
             return;
         }
         
-        var result = Physics2D.Raycast(_player.transform.position, AimDirection, grappleMaxDistance, ~(1 << 8));
+        var result = Physics2D.Raycast(_player.transform.position, AimDirection, grappleMaxDistance, 1<<11);
 
         if (result.collider == null)
         {
@@ -76,7 +76,6 @@ public class PlayerGrappling : MonoBehaviour
         distanceJoint.enabled = true;
         distanceJoint.connectedAnchor = point.position;
         distanceJoint.distance = Vector2.Distance(transform.position, point.position);
-        distanceJoint.anchor = new Vector2(0, 1);
         
         while (Input.GetKey(KeyCode.Mouse0))
         {
@@ -84,7 +83,7 @@ public class PlayerGrappling : MonoBehaviour
             distanceJoint.distance -= pullAmount;
             pullAmount = Mathf.Min(pullAmount + pullAcceleration, maxPullStrength);
             distanceJoint.distance = Mathf.Max(distanceJoint.distance, grappleMinDistance);
-            Debug.DrawLine(transform.position, point.position, Color.red);
+            Debug.DrawLine((Vector2) _player.parentObject.transform.position + distanceJoint.anchor, point.position, Color.red);
             yield return new WaitForFixedUpdate();
         }
 

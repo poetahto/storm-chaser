@@ -26,11 +26,11 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (_movement.PlayerVelocity.x > movementThreshold)
         {
-            playerAnimator.transform.rotation = Quaternion.Euler(Vector3.zero);
+            _player.parentObject.transform.rotation = Quaternion.Euler(Vector3.zero);
         }
         else if (_movement.PlayerVelocity.x < -movementThreshold)
         {
-            playerAnimator.transform.rotation = Quaternion.Euler(0, 180, 0);
+            _player.parentObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
         if (_grappling.IsGrappling)
