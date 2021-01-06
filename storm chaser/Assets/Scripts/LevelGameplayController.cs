@@ -7,10 +7,6 @@ public class LevelGameplayController : MonoBehaviour
     [SerializeField] private Level levelUI = null;
     [SerializeField] private Transform cameraTracker = null;
     [SerializeField] private Transform finishLine = null;
-    [SerializeField] private ObstacleSpawner spawner = null;
-
-    [SerializeField] private float initialSpawnRatePerMin = 10;
-    [SerializeField] private float finalSpawnRatePerMin = 60;
     
     private float CurrentDistance => finishLine.position.x - cameraTracker.position.x;
     private float _totalDistance;
@@ -30,17 +26,7 @@ public class LevelGameplayController : MonoBehaviour
     private void Start()
     {
         UIElementController.Instance.BindProgressBar(this);
-        StartCoroutine(SpawnObstacles());
         
         _totalDistance = CurrentDistance;
-    }
-
-    private IEnumerator SpawnObstacles()
-    {
-        while (true)
-        {
-            spawner.SpawnObject();
-            yield return new WaitForSeconds(60 / Mathf.Lerp(initialSpawnRatePerMin, finalSpawnRatePerMin, PercentComplete));
-        }
     }
 }

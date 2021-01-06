@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\DamageListener.cs" />
      <Compile Include="Assets\Scripts\LevelObjective.cs" />
      <Compile Include="Assets\Scripts\ObstacleSpawner.cs" />
+     <Compile Include="Assets\Scripts\UnityEventTrigger.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />

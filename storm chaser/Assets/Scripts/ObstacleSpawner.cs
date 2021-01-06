@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,16 +8,41 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private Collider2D spawningArea = null;
     [SerializeField] private Rigidbody2D[] obstacles = null;
-
+    [SerializeField] private Vector2 spawnVelocity = Vector2.left;
+    [SerializeField] private bool spawnWithCollision = false;
+    
+    [SerializeField] private LevelGameplayController controller = null;
+    [SerializeField] private float initialSpawnRatePerMin = 10;
+    [SerializeField] private float finalSpawnRatePerMin = 60;
+    
     private GameObject _poolParent;
     private Queue<Rigidbody2D> _obstaclePool;
     private Vector2 _spawnPosition;
+    private bool _activelySpawning = false;
 
-    private void OnGUI()
+    public void StartSpawning()
     {
-        if (GUILayout.Button("Spawn Obstacle"))
+        _activelySpawning = true;
+    }
+
+    public void StopSpawning()
+    {
+        _activelySpawning = false;
+    }
+
+    private IEnumerator SpawnObstacles()
+    {
+        while (true)
         {
-            SpawnObject();
+            if (!_activelySpawning)
+            {
+                yield return null;
+            }
+            else
+            {
+                SpawnObject();
+                yield return new WaitForSeconds(60 / Mathf.Lerp(initialSpawnRatePerMin, finalSpawnRatePerMin, controller.PercentComplete));
+            }
         }
     }
 
@@ -28,14 +54,19 @@ public class ObstacleSpawner : MonoBehaviour
         foreach (var obstacle in obstacles)
         {
             var obj = Instantiate(obstacle, _poolParent.transform, true);
-            obj.GetComponent<Collider2D>().isTrigger = true;
+            obj.GetComponent<Collider2D>().isTrigger = !spawnWithCollision;
             _obstaclePool.Enqueue(obj);
             obj.gameObject.SetActive(false);
             obj.isKinematic = false;
         }
     }
 
-    public void SpawnObject()
+    private void Start()
+    {
+        StartCoroutine(SpawnObstacles());
+    }
+
+    private void SpawnObject()
     {
         GetRandomSpawnPositionInArea();
         SpawnNextObstacle();
@@ -57,6 +88,6 @@ public class ObstacleSpawner : MonoBehaviour
         randomObstacle.transform.position = _spawnPosition;
         randomObstacle.gameObject.SetActive(true);
 
-        randomObstacle.velocity = Vector2.left * 10;
+        randomObstacle.velocity = spawnVelocity * 10;
     }
 }

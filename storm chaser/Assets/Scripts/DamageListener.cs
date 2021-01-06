@@ -8,7 +8,7 @@ public class DamageListener : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == 9)
+        if (other.gameObject.CompareTag("Damaging"))
         {
             TakeDamage.Invoke();
         }
@@ -16,7 +16,7 @@ public class DamageListener : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9)
+        if (other.gameObject.CompareTag("Damaging"))
         {
             TakeDamage.Invoke();
         }

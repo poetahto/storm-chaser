@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7634588556680720571}
   - component: {fileID: 7634588556680720564}
   - component: {fileID: 4482295772234123170}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Medium Cactus
-  m_TagString: Untagged
+  m_TagString: Damaging
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
