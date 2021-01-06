@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpStrength = 1f;
     [SerializeField] private float lowJumpMultiplier = 1.5f;
     [SerializeField] private float fallMultiplier = 2f;
-    [SerializeField] private float groundRaycastDistance = 0.1f;
     
     private Player _player;
     private PlayerInput _input;
@@ -34,17 +33,12 @@ public class PlayerMovement : MonoBehaviour
         _remainingJumps = maxJumps;
     }
 
-    public void AddForce(Vector2 force)
-    {
-        playerRigidbody.AddForce(force);
-    }
-
     private void FixedUpdate()
     {
         if (!_input.IsAcceptingInput)
             return;
         
-        _grounded = groundCheckCollider.IsTouchingLayers(~(1 << 8));
+        _grounded = groundCheckCollider.IsTouchingLayers(1<<11);
         
         if (_grounded)
             _remainingJumps = maxJumps;

@@ -39,8 +39,7 @@ public class PlayerAnimator : MonoBehaviour
         }
         else if (_movement.Airborne)
         {
-            // player is jumping
-            playerAnimator.Play("Jump");
+            playerAnimator.Play(_movement.PlayerVelocity.y > 0 ? "Jump Up" : "Jump Down");
         }
         else if (_movement.PlayerVelocity.x > movementThreshold || _movement.PlayerVelocity.x < -movementThreshold)
         {
