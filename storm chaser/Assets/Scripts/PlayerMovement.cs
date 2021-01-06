@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Slide Settings")] 
     [SerializeField] private float slideSpeed = 1;
     [SerializeField] private float slideCooldown = 3;
+    [SerializeField] private ParticleSystem dustParticles = null;
     
     private Player _player;
     private PlayerInput _input;
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             // slide
             SetStanding(false);
             playerRigidbody.velocity = new Vector2(slideSpeed * _input.TargetDirection.x, playerRigidbody.velocity.y);
+            dustParticles.Play();
             return;
         }
 
@@ -92,6 +94,9 @@ public class PlayerMovement : MonoBehaviour
                 
                 targetVelocity.y = jumpStrength;
                 _remainingJumps--;
+                
+                if (!_grounded)
+                    dustParticles.Play();
             }
             _input.ResetJump();
         }
