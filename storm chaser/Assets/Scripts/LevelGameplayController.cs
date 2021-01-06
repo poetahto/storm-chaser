@@ -31,9 +31,4 @@ public class LevelGameplayController : MonoBehaviour
         
         _totalDistance = CurrentDistance;
     }
-
-    private void Update()
-    {
-        Debug.Log($"finishline: {finishLine.position.x} trakcer: {cameraTracker.position.x} ");
-    }
 }
