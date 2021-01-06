@@ -14,13 +14,13 @@ public class Hints : MonoBehaviour
 
         _hintActive = true;
         mainSpawner.StopSpawning();
-        UIElementController.Instance.DisplayText(message, fadeTime);
+        UIElementController.Instance.DisplaySubText(message, fadeTime);
     }
 
     public void ClearHints()
     {
         _hintActive = false;
         mainSpawner.StartSpawning();
-        UIElementController.Instance.ClearText(fadeTime);
+        UIElementController.Instance.ClearSubText(fadeTime);
     }
 }

@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField] private ObstacleDifficulty[] difficulties = null;
+
     [SerializeField] private Transform target = null;
     
     [SerializeField] private Collider2D spawningArea = null;
@@ -14,14 +16,19 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private bool spawnWithSpin = false;
     
     [SerializeField] private LevelGameplayController controller = null;
-    [SerializeField] private float initialSpawnRatePerMin = 10;
-    [SerializeField] private float finalSpawnRatePerMin = 60;
-    
+
+    private ObstacleDifficulty _curDif;
     private GameObject _poolParent;
     private Queue<Rigidbody2D> _obstaclePool;
     private Vector2 _spawnPosition;
     private bool _activelySpawning = false;
 
+    public void SetDifficulty(int difficulty)
+    {
+        Debug.Log(difficulty);
+        _curDif = difficulties[Mathf.Min(difficulty, difficulties.Length - 1) ];
+    }
+    
     public void StartSpawning()
     {
         _activelySpawning = true;
@@ -43,7 +50,8 @@ public class ObstacleSpawner : MonoBehaviour
             else
             {
                 SpawnObject();
-                yield return new WaitForSeconds(60 / Mathf.Lerp(initialSpawnRatePerMin, finalSpawnRatePerMin, controller.PercentComplete));
+                yield return new WaitForSeconds(60 / Mathf.Lerp(
+                    _curDif.initialSpawnRatePerMin, _curDif.finalSpawnRatePerMin, controller.PercentComplete));
             }
         }
     }
@@ -90,20 +98,21 @@ public class ObstacleSpawner : MonoBehaviour
         randomObstacle.transform.position = _spawnPosition;
         randomObstacle.gameObject.SetActive(true);
 
-        var velocity = spawnVelocity * 10;
+        var veloMult = Mathf.Lerp(_curDif.initialVelocityMult, _curDif.finalVelocityMult, controller.PercentComplete);
+        var velocity = spawnVelocity * veloMult;
 
         if (target != null)
         {
             
-            velocity = ((Vector2) target.position - _spawnPosition).normalized * Mathf.Lerp(5, 10, controller.PercentComplete);
-            velocity.y += 2;
+            velocity = ((Vector2) target.position - _spawnPosition).normalized * veloMult;
+            velocity.y += Mathf.Lerp(_curDif.initialYBoost, _curDif.finalYBoost, controller.PercentComplete);;
         }
 
         randomObstacle.velocity = velocity;
         
         if (spawnWithSpin)
         {
-            randomObstacle.AddTorque(50);
+            randomObstacle.AddTorque(Mathf.Lerp(_curDif.initialTorque, _curDif.finalTorque, controller.PercentComplete));
         }
     }
 }

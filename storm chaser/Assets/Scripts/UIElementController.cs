@@ -1,10 +1,14 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class UIElementController : MonoBehaviour
 {
     [SerializeField] private CanvasGroup pauseMenu = null;
     [SerializeField] private ProgressBar progressBar = null;
+    
+    [SerializeField] private TMP_Text specialText = null;
+    [SerializeField] private CanvasGroup specialTextCanvasGroup;
     
     [SerializeField] private TMP_Text text = null;
     [SerializeField] private CanvasGroup textCanvasGroup;
@@ -15,6 +19,7 @@ public class UIElementController : MonoBehaviour
     {
         Instance = this;
         textCanvasGroup.alpha = 0;
+        specialTextCanvasGroup.alpha = 0;
     }
 
     public void TogglePauseMenu()
@@ -27,13 +32,26 @@ public class UIElementController : MonoBehaviour
         progressBar.Bind(controller);
     }
 
-    public void DisplayText(string message, float fadeTime)
+    public void DisplaySpecialText(string message, float fadeTime)
+    {
+        specialText.text = message;
+        StartCoroutine(TitleCard(fadeTime));
+    }
+
+    private IEnumerator TitleCard(float time)
+    {
+        LeanTween.alphaCanvas(specialTextCanvasGroup, 1, time);
+        yield return new WaitForSeconds(time);
+        LeanTween.alphaCanvas(specialTextCanvasGroup, 0, time);
+    }
+
+    public void DisplaySubText(string message, float fadeTime)
     {
         text.text = message;
         LeanTween.alphaCanvas(textCanvasGroup, 1, fadeTime);
     }
 
-    public void ClearText(float fadeTime)
+    public void ClearSubText(float fadeTime)
     {
         LeanTween.alphaCanvas(textCanvasGroup, 0, fadeTime);
     }

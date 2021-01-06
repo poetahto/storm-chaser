@@ -297,6 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb497e09a141c5bf09c1939a69a9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulties:
+  - {fileID: 11400000, guid: 589e2bede0a7af148871d3afd00efe41, type: 2}
+  - {fileID: 11400000, guid: 12ab9d395f06981479f87e7050c781ab, type: 2}
+  - {fileID: 11400000, guid: f3bd3efa24ef2604ab107251563b2596, type: 2}
   target: {fileID: 0}
   spawningArea: {fileID: 1047952250}
   obstacles:
@@ -306,8 +310,6 @@ MonoBehaviour:
   spawnWithCollision: 1
   spawnWithSpin: 0
   controller: {fileID: 493685568}
-  initialSpawnRatePerMin: 20
-  finalSpawnRatePerMin: 20
 --- !u!4 &179340297
 Transform:
   m_ObjectHideFlags: 0
@@ -47724,6 +47726,38 @@ PrefabInstance:
       propertyPath: objective
       value: 
       objectReference: {fileID: 2753185313723576063}
+    - target: {fileID: 2753185313638442430, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: spawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753185313638442430, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: spawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 2111805091}
+    - target: {fileID: 2753185313638442430, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: spawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 179340295}
+    - target: {fileID: 2753185313638442430, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: titlecardAnimationTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753185314180659293, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: difficulties.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753185314180659293, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: difficulties.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6985f45fa5d90f54787373c61d761470, type: 2}
+    - target: {fileID: 2753185314180659293, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: difficulties.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a16d3ff1aac0691459fb9f008aaf18c8, type: 2}
+    - target: {fileID: 2753185314180659293, guid: 6074a07fb46808b4092833430a186c10, type: 3}
+      propertyPath: difficulties.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 65bea807d07f1374fb129016440f33bb, type: 2}
     - target: {fileID: 2753185314959495990, guid: 6074a07fb46808b4092833430a186c10, type: 3}
       propertyPath: m_RootOrder
       value: 2

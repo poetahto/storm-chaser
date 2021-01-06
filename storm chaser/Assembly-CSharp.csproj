@@ -53,6 +53,8 @@
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\PlayerCameraController.cs" />
      <Compile Include="Assets\Scripts\LevelGameplayController.cs" />
+     <Compile Include="Assets\Scripts\LevelMusic.cs" />
+     <Compile Include="Assets\Scripts\CanvasGroupNavigator.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
      <Compile Include="Assets\Scripts\PlayerAnimator.cs" />
@@ -60,10 +62,13 @@
      <Compile Include="Assets\Scripts\DamageListener.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
+     <Compile Include="Assets\Scripts\Hints.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
      <Compile Include="Assets\Scripts\UnityEventTrigger.cs" />
      <Compile Include="Assets\Scripts\PlayerGrappling.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
+     <Compile Include="Assets\Scripts\LevelButton.cs" />
+     <Compile Include="Assets\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\LevelObjective.cs" />
      <Compile Include="Assets\Scripts\UIElementController.cs" />
      <Compile Include="Assets\Scripts\ProgressBar.cs" />
@@ -74,11 +79,7 @@
      <Compile Include="Assets\Scripts\ObstacleSpawner.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\LevelMusic.cs" />
-     <Compile Include="Assets\Scripts\Hints.cs" />
-     <Compile Include="Assets\Scripts\LevelSelect.cs" />
-     <Compile Include="Assets\Scripts\LevelButton.cs" />
-     <Compile Include="Assets\Scripts\CanvasGroupNavigator.cs" />
+     <Compile Include="Assets\Scripts\ObstacleDifficulty.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
