@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 //TODO : Add death and respawn
 
@@ -29,6 +30,28 @@ public class Player : MonoBehaviour
         GUILayout.Label($"Completion: { gameplayController.PercentComplete }");
     }
 
+    public void SetDifficulty(int difficulty)
+    {
+        switch (difficulty)
+        {
+            case 0:
+                DifficultyHelper(3);
+                break;
+            case 1:
+                DifficultyHelper(2);
+                break;
+            case 2:
+                DifficultyHelper(1);
+                break;
+        }
+    }
+
+    private void DifficultyHelper(float num)
+    {
+        grappling.SetCooldown(num);
+        movement.SetCooldown(num);
+    }
+    
     public void DamagePlayer()
     {
         if (input.IsAcceptingInput)

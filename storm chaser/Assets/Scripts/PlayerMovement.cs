@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
     public bool Airborne => !_grounded;
     public int RemainingJumps => _remainingJumps;
     public bool Sliding => _sliding;
+
+    public void SetCooldown(float cooldown)
+    {
+        slideCooldown = cooldown;
+    }
     
     private void Awake()
     {

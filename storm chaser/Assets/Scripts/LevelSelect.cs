@@ -3,7 +3,8 @@
 public class LevelSelect : MonoBehaviour
 {
     [SerializeField] private LevelButton[] levels = null;
-
+    [SerializeField] private LevelButton level2 = null;
+    
     public void UnlockLevel(int index)
     {
         if (levels.Length > PlayerPrefs.GetInt("UnlockedLevels") && levels[index].locked)
@@ -42,9 +43,10 @@ public class LevelSelect : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Loaded: " + PlayerPrefs.GetInt("FinishedLevelOne"));
         if (PlayerPrefs.GetInt("FinishedLevelOne") == 1)
         {
-            UnlockLevel(1);
+            level2.Unlock();
         }
         //
         // var unlockedLevelCount = Mathf.Min(PlayerPrefs.GetInt("UnlockedLevels"), levels.Length);

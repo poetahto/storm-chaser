@@ -24,6 +24,11 @@ public class PlayerGrappling : MonoBehaviour
     public bool IsGrappling => _isGrappling;
     public Vector2 AimDirection => (_camera.ScreenToWorldPoint(Input.mousePosition) - _player.transform.position).normalized;
 
+    public void SetCooldown(float cooldown)
+    {
+        grappleCooldown = cooldown;
+    }
+    
     private void Awake()
     {
         grappleLine.enabled = false;

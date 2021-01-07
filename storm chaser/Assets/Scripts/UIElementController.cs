@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class UIElementController : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup black = null;
+    
     [SerializeField] private CanvasGroup pauseMenu = null;
     [SerializeField] private ProgressBar progressBar = null;
     
@@ -54,5 +57,15 @@ public class UIElementController : MonoBehaviour
     public void ClearSubText(float fadeTime)
     {
         LeanTween.alphaCanvas(textCanvasGroup, 0, fadeTime);
+    }
+
+    public void FadeOut(float time, Action callback)
+    {
+        LeanTween.alphaCanvas(black, 1, time).setOnComplete(callback);
+    }
+
+    public void FadeIn(float time)
+    {
+        LeanTween.alphaCanvas(black, 0, time);
     }
 }

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a7a31fca2f4c84b0d8caaad0d7e0cc, type: 3}
   m_Name: TW Easy
   m_EditorClassIdentifier: 
-  initialSpawnRatePerMin: 10
-  finalSpawnRatePerMin: 60
+  initialSpawnRatePerMin: 20
+  finalSpawnRatePerMin: 20
   initialVelocityMult: 5
   finalVelocityMult: 10
-  initialYBoost: 2
-  finalYBoost: 2
-  initialTorque: 50
-  finalTorque: 50
+  initialYBoost: 0
+  finalYBoost: 0
+  initialTorque: 0
+  finalTorque: 0

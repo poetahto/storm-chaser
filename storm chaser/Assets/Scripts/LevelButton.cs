@@ -16,6 +16,8 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Button mainButton;
     [SerializeField] private Button difficultyButton;
     [SerializeField] private TMP_Text difficultyButtonText;
+    [SerializeField] private MenuHelper helper;
+    [SerializeField] private float fadeTime = 1;
     
     public bool locked;
 
@@ -62,6 +64,6 @@ public class LevelButton : MonoBehaviour
     public void LoadLevel()
     {
         PlayerPrefs.SetInt("Difficulty", (int) DifficultyLevel);
-        level.Load();
+        helper.FadeOut(fadeTime, () => level.Load());   
     }
 }

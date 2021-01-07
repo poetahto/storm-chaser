@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class LevelGameplayController : MonoBehaviour
 {
+    [SerializeField] private Player player = null;
+    [SerializeField] private float fadeInTime = 1;
     [SerializeField] private float titlecardAnimationTime = 0.25f;
     [SerializeField] private Level currentLevel = null;
     [SerializeField] private int nextLevelIndex = 0;
@@ -31,6 +33,8 @@ public class LevelGameplayController : MonoBehaviour
             spawner.SetDifficulty(PlayerPrefs.GetInt("Difficulty"));
         }
 
+        player.SetDifficulty(PlayerPrefs.GetInt("Difficulty"));
+
         levelUI.Load();
         objective.EndLevel += OnLevelEnd;
         Cursor.SetCursor(mouseImage, new Vector2(4, -4), CursorMode.Auto);
@@ -50,6 +54,7 @@ public class LevelGameplayController : MonoBehaviour
 
         UIElementController.Instance.BindProgressBar(this);
         UIElementController.Instance.DisplaySpecialText($"{currentLevel.name} - {difficulty}", titlecardAnimationTime);
+        UIElementController.Instance.FadeIn(fadeInTime);
         
         _totalDistance = CurrentDistance;
     }
@@ -57,6 +62,6 @@ public class LevelGameplayController : MonoBehaviour
     private void OnLevelEnd(object sender, EventArgs args)
     {
         PlayerPrefs.SetInt("FinishedLevelOne", 1);
-        mainMenu.Load();
+        UIElementController.Instance.FadeOut(fadeInTime, ()=> mainMenu.Load());
     }
 }
