@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuHelper : MonoBehaviour
 {
@@ -35,5 +36,11 @@ public class MenuHelper : MonoBehaviour
     public void FadeIn(float time)
     {
         LeanTween.alphaCanvas(blackScreen, 0, time);
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1;
+        FadeOut(0.5f, ()=> SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex));
     }
 }

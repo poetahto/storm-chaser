@@ -23,11 +23,34 @@ public class UIElementController : MonoBehaviour
         Instance = this;
         textCanvasGroup.alpha = 0;
         specialTextCanvasGroup.alpha = 0;
+        pauseMenu.alpha = 0;
+        pauseMenu.interactable = false;
+        pauseMenu.blocksRaycasts = false;
+    }
+
+    private void SetCanvasGroup(CanvasGroup group, bool active)
+    {
+        if (LeanTween.isTweening(pauseMenu.gameObject))
+            return;
+            
+        if (active)
+        {
+            group.interactable = true;
+            group.blocksRaycasts = true;
+            LeanTween.alphaCanvas(pauseMenu, 1, 0.2f).setOnComplete(() => Time.timeScale = 0);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            group.interactable = false;
+            group.blocksRaycasts = false;
+            LeanTween.alphaCanvas(pauseMenu, 0, 0.2f);
+        }
     }
 
     public void TogglePauseMenu()
     {
-        pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+        SetCanvasGroup(pauseMenu, !pauseMenu.interactable);
     }
 
     public void BindProgressBar(LevelGameplayController controller)
@@ -67,5 +90,10 @@ public class UIElementController : MonoBehaviour
     public void FadeIn(float time)
     {
         LeanTween.alphaCanvas(black, 0, time);
+    }
+
+    public void ResetTime()
+    {
+        Time.timeScale = 1;
     }
 }
