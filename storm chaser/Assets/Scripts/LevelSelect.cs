@@ -14,22 +14,22 @@ public class LevelSelect : MonoBehaviour
         }
     }
     
-    private void OnGUI()
-    {
-        GUILayout.Label($"Levels: {PlayerPrefs.GetInt("UnlockedLevels")}");
-        
-        if (GUILayout.Button("Unlock level 1"))
-            UnlockLevel(0);
-        
-        if (GUILayout.Button("Unlock level 2"))
-            UnlockLevel(1);
-        
-        if (GUILayout.Button("Reset Progress"))
-            ResetProgress();
-        
-        if (GUILayout.Button("Test"))
-            PlayerPrefs.SetInt("FinishedLevelOne", 1);
-    }
+    // private void OnGUI()
+    // {
+    //     GUILayout.Label($"Levels: {PlayerPrefs.GetInt("UnlockedLevels")}");
+    //     
+    //     if (GUILayout.Button("Unlock level 1"))
+    //         UnlockLevel(0);
+    //     
+    //     if (GUILayout.Button("Unlock level 2"))
+    //         UnlockLevel(1);
+    //     
+    //     if (GUILayout.Button("Reset Progress"))
+    //         ResetProgress();
+    //     
+    //     if (GUILayout.Button("Test"))
+    //         PlayerPrefs.SetInt("FinishedLevelOne", 1);
+    // }
 
     private void ResetProgress()
     {
@@ -43,7 +43,6 @@ public class LevelSelect : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Loaded: " + PlayerPrefs.GetInt("FinishedLevelOne"));
         if (PlayerPrefs.GetInt("FinishedLevelOne") == 1)
         {
             level2.Unlock();

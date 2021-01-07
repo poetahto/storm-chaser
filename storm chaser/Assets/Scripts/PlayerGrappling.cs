@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using FMODUnity;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
 public class PlayerGrappling : MonoBehaviour
 {
+    [SerializeField] private StudioEventEmitter grappleSound;
     [SerializeField] private float grappleCooldown = 3;
     
     [SerializeField] private float maxPullStrength = 1;
@@ -74,9 +76,10 @@ public class PlayerGrappling : MonoBehaviour
 
     private IEnumerator Grapple(Transform point)
     {
+        grappleSound.Play();
         var pullAmount = maxPullStrength;
         _isGrappling = true;
-
+        
         distanceJoint.enabled = true;
         distanceJoint.connectedAnchor = point.position;
         distanceJoint.distance = Vector2.Distance(transform.position, point.position);

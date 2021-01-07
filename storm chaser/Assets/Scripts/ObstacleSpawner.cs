@@ -25,7 +25,6 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SetDifficulty(int difficulty)
     {
-        Debug.Log(difficulty);
         _curDif = difficulties[Mathf.Min(difficulty, difficulties.Length - 1) ];
     }
     

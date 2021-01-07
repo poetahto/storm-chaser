@@ -61,7 +61,7 @@ public class LevelGameplayController : MonoBehaviour
 
     private void OnLevelEnd(object sender, EventArgs args)
     {
-        PlayerPrefs.SetInt("FinishedLevelOne", 1);
+        // PlayerPrefs.SetInt("FinishedLevelOne", 1);
         UIElementController.Instance.FadeOut(fadeInTime, ()=> mainMenu.Load());
     }
 }

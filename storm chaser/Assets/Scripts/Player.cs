@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 //TODO : Add death and respawn
 
@@ -18,17 +20,30 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer playerSprite = null;
     [SerializeField] private ParticleSystem bloodParticles = null;
     [SerializeField] private float deathTime = 2;
-    
-    // Display debug information about player components
-    private void OnGUI()
+    [SerializeField, EventRef] private string deathSound;
+
+    private EventInstance deathInstance;
+
+    private void Awake()
     {
-        GUILayout.Label($"Direction: { input.TargetDirection.ToString() }");
-        GUILayout.Label($"Velocity: { movement.PlayerVelocity.ToString() }");
-        GUILayout.Label($"Airborne: { movement.Airborne }");
-        GUILayout.Label($"Air Jumps: { movement.RemainingJumps }");
-        GUILayout.Label($"Grapple Charged: { grappling.GrappleCharged }");
-        GUILayout.Label($"Completion: { gameplayController.PercentComplete }");
+        deathInstance = RuntimeManager.CreateInstance(deathSound);
     }
+
+    private void OnDestroy()
+    {
+        deathInstance.release();
+    }
+    //
+    // // Display debug information about player components
+    // private void OnGUI()
+    // {
+    //     GUILayout.Label($"Direction: { input.TargetDirection.ToString() }");
+    //     GUILayout.Label($"Velocity: { movement.PlayerVelocity.ToString() }");
+    //     GUILayout.Label($"Airborne: { movement.Airborne }");
+    //     GUILayout.Label($"Air Jumps: { movement.RemainingJumps }");
+    //     GUILayout.Label($"Grapple Charged: { grappling.GrappleCharged }");
+    //     GUILayout.Label($"Completion: { gameplayController.PercentComplete }");
+    // }
 
     public void SetDifficulty(int difficulty)
     {
@@ -60,6 +75,9 @@ public class Player : MonoBehaviour
 
     private IEnumerator DeathEffect()
     {
+        Destroy(parentObject.GetComponent<DistanceJoint2D>());
+        Destroy(parentObject.GetComponent<Rigidbody2D>());
+        deathInstance.start();
         input.SetAcceptingInput(false);
         animator.DisableAnimation();
         playerSprite.enabled = false;
